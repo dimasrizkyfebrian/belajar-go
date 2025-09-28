@@ -3,19 +3,26 @@ package main
 import "fmt"
 
 func main() {
-	// Membuat array string berisi 4 nama.
-	// Go akan otomatis menghitung ukurannya jika kita menggunakan [...]
-	namaSiswa := [...]string{"Adi", "Budi", "Cici", "Dodi"}
-	namaSiswa[2] = "Citra" // Ubah data array setelah deklarasi
+	// Membuat sebuah slice of string
+	buah := []string{"Apel", "Pisang", "Jeruk"}
 
-	fmt.Println("Daftar Nama Siswa:")
-	fmt.Println(namaSiswa) // Mencetak seluruh array
+	fmt.Println("Slice awal:", buah)
+	fmt.Printf("Jumlah buah (len): %d\n", len(buah))
+	fmt.Printf("Kapasitas (cap): %d\n\n", cap(buah))
 
-	// Mengakses dan mencetak elemen satu per satu
-	fmt.Println("Siswa pertama:", namaSiswa[0])
-	fmt.Println("Siswa ketiga:", namaSiswa[2])
+	// Menambahkan elemen baru ke slice menggunakan append
+	fmt.Println("Menambahkan 'Mangga'...")
+	buah = append(buah, "Mangga")
 
-	// Mendapatkan panjang array menggunakan fungsi len()
-	jumlahSiswa := len(namaSiswa)
-	fmt.Printf("Total siswa: %d orang\n", jumlahSiswa)
+	fmt.Println("Slice setelah ditambah:", buah)
+	fmt.Printf("Jumlah buah (len) sekarang: %d\n", len(buah))
+	fmt.Printf("Kapasitas (cap) sekarang: %d\n\n", cap(buah))
+
+	// Menambahkan nanas dan anggur
+	fmt.Println("Menambahkan 'Nanas dan Anggur'...")
+	buah = append(buah, "Nanas", "Anggur")
+
+	fmt.Println("Slice setelah ditambah:", buah)
+	fmt.Printf("Jumlah buah (len) sekarang: %d\n", len(buah))
+	fmt.Printf("Kapasitas (cap) sekarang: %d\n", cap(buah))
 }
