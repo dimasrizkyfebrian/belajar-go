@@ -3,35 +3,39 @@ package main
 import "fmt"
 
 func main() {
-	// Slice awal kita
-	angka := []int{0, 2, 4, 6, 8, 10}
-	fmt.Println("Slice awal:", angka)
+	// Membuat map kosong
+	nilaiSiswa := make(map[string]int)
 
-	// Mengambil irisan dari indeks 1 sampai 4 (indeks 4 tidak termasuk)
-	// Hasilnya adalah elemen di indeks 1, 2, 3 -> {2, 4, 6}
-	sliceTengah := angka[1:4]
-	fmt.Println("Slice tengah [1:4]:", sliceTengah)
+	// Menambahkan beberapa data
+	nilaiSiswa["Adi"] = 85
+	nilaiSiswa["Budi"] = 90
+	nilaiSiswa["Cici"] = 78
 
-	// Eksperimen Slice
-	sliceEksperimen := angka[2:4]
-	fmt.Println("Slice eksperimen [2:4]:", sliceEksperimen)
+	fmt.Println("Peta nilai siswa:", nilaiSiswa)
 
-	// Mengambil irisan dari awal sampai indeks 3 (indeks 3 tidak termasuk)
-	sliceAwal := angka[:3]
-	fmt.Println("Slice awal [:3]:", sliceAwal)
+	// Mengakses nilai Budi
+	fmt.Println("Nilai Budi:", nilaiSiswa["Budi"])
 
-	// Mengambil irisan dari indeks 3 sampai akhir
-	sliceAkhir := angka[3:]
-	fmt.Println("Slice akhir [3:]:", sliceAkhir)
+	// Menghapus data Cici
+	delete(nilaiSiswa, "Cici")
+	fmt.Println("Setelah Cici dihapus:", nilaiSiswa)
 
 	fmt.Println("\n======================================")
-	fmt.Println("Membuktikan slice berbagi array yang sama:")
+	fmt.Println("Mengecek keberadaan key:")
 
-	fmt.Println("Slice akhir sebelum diubah:", sliceAkhir)
-	// Kita ubah elemen pertama di sliceAkhir (yaitu angka 6)
-	sliceAkhir[0] = 999
-	fmt.Println("Slice akhir setelah diubah:", sliceAkhir)
+	// Mengecek nilai untuk "Dodi" (yang tidak ada)
+	nilaiDodi, ok := nilaiSiswa["Dodi"]
+	if ok {
+		fmt.Println("Nilai Dodi adalah:", nilaiDodi)
+	} else {
+		fmt.Println("Data nilai untuk Dodi tidak ditemukan.")
+	}
 
-	// Lihat apa yang terjadi pada slice 'angka' yang asli
-	fmt.Println("Slice 'angka' asli setelah slice akhir diubah:", angka)
+	fmt.Println("\n======================================")
+	fmt.Println("Menambahkan data baru:")
+
+	nilaiSiswa["Dimas"] = 95
+	nilaiSiswa["Adi"] = 100
+
+	fmt.Println("Peta nilai siswa:", nilaiSiswa)
 }
