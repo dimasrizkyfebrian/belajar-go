@@ -3,26 +3,35 @@ package main
 import "fmt"
 
 func main() {
-	// Membuat sebuah slice of string
-	buah := []string{"Apel", "Pisang", "Jeruk"}
+	// Slice awal kita
+	angka := []int{0, 2, 4, 6, 8, 10}
+	fmt.Println("Slice awal:", angka)
 
-	fmt.Println("Slice awal:", buah)
-	fmt.Printf("Jumlah buah (len): %d\n", len(buah))
-	fmt.Printf("Kapasitas (cap): %d\n\n", cap(buah))
+	// Mengambil irisan dari indeks 1 sampai 4 (indeks 4 tidak termasuk)
+	// Hasilnya adalah elemen di indeks 1, 2, 3 -> {2, 4, 6}
+	sliceTengah := angka[1:4]
+	fmt.Println("Slice tengah [1:4]:", sliceTengah)
 
-	// Menambahkan elemen baru ke slice menggunakan append
-	fmt.Println("Menambahkan 'Mangga'...")
-	buah = append(buah, "Mangga")
+	// Eksperimen Slice
+	sliceEksperimen := angka[2:4]
+	fmt.Println("Slice eksperimen [2:4]:", sliceEksperimen)
 
-	fmt.Println("Slice setelah ditambah:", buah)
-	fmt.Printf("Jumlah buah (len) sekarang: %d\n", len(buah))
-	fmt.Printf("Kapasitas (cap) sekarang: %d\n\n", cap(buah))
+	// Mengambil irisan dari awal sampai indeks 3 (indeks 3 tidak termasuk)
+	sliceAwal := angka[:3]
+	fmt.Println("Slice awal [:3]:", sliceAwal)
 
-	// Menambahkan nanas dan anggur
-	fmt.Println("Menambahkan 'Nanas dan Anggur'...")
-	buah = append(buah, "Nanas", "Anggur")
+	// Mengambil irisan dari indeks 3 sampai akhir
+	sliceAkhir := angka[3:]
+	fmt.Println("Slice akhir [3:]:", sliceAkhir)
 
-	fmt.Println("Slice setelah ditambah:", buah)
-	fmt.Printf("Jumlah buah (len) sekarang: %d\n", len(buah))
-	fmt.Printf("Kapasitas (cap) sekarang: %d\n", cap(buah))
+	fmt.Println("\n======================================")
+	fmt.Println("Membuktikan slice berbagi array yang sama:")
+
+	fmt.Println("Slice akhir sebelum diubah:", sliceAkhir)
+	// Kita ubah elemen pertama di sliceAkhir (yaitu angka 6)
+	sliceAkhir[0] = 999
+	fmt.Println("Slice akhir setelah diubah:", sliceAkhir)
+
+	// Lihat apa yang terjadi pada slice 'angka' yang asli
+	fmt.Println("Slice 'angka' asli setelah slice akhir diubah:", angka)
 }
